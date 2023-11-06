@@ -34,10 +34,19 @@ public class SistemaFichamentoLivros {
         System.out.println("Digite o comentário sobre o livro:");
         String comentario = scanner.nextLine();
 
-        Livro novoLivro = new Livro();
+        Fichamento novoLivro = new Fichamento();
+        novoLivro.setTitulo(titulo);
+        novoLivro.setAutor(autor);
+        novoLivro.setAnoPublicacao(anoPublicacao);
+        novoLivro.setGenero(genero);
+        novoLivro.setAssunto(assunto);
+        novoLivro.setComentario(comentario);
+
         adicionarLivro(novoLivro);
+
         System.out.println("Livro cadastrado com sucesso!");
     }
+
     public void excluirLivro() {
         Scanner scanner = new Scanner(System.in);
 
