@@ -70,6 +70,59 @@ public class SistemaFichamentoLivros {
         }
     }
 
+    public Livro editarLivro() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite o título do livro a ser editado:");
+        String titulo = scanner.nextLine();
+
+        Livro livroExistente = null;
+
+        for (Livro livro : listaLivros) {
+            if (livro.getTitulo().equals(titulo)) {
+                livroExistente = livro;
+                break;
+            }
+        }
+
+        if (livroExistente != null) {
+            System.out.println("Digite o novo título do livro:");
+            String novoTitulo = scanner.nextLine();
+            livroExistente.setTitulo(novoTitulo);
+
+            System.out.println("Digite o novo autor do livro:");
+            String novoAutor = scanner.nextLine();
+            livroExistente.setAutor(novoAutor);
+
+            System.out.println("Digite o novo ano de publicação do livro:");
+            int novoAnoPublicacao = Integer.parseInt(scanner.nextLine());
+            livroExistente.setAnoPublicacao(novoAnoPublicacao);
+
+            System.out.println("Digite o novo gênero do livro:");
+            String novoGenero = scanner.nextLine();
+            livroExistente.setGenero(novoGenero);
+
+            if (livroExistente instanceof Fichamento) {
+                Fichamento fichamento = (Fichamento) livroExistente;
+
+                System.out.println("Digite o novo assunto do livro:");
+                String novoAssunto = scanner.nextLine();
+                fichamento.setAssunto(novoAssunto);
+
+                System.out.println("Digite o novo comentário sobre o livro:");
+                String novoComentario = scanner.nextLine();
+                fichamento.setComentario(novoComentario);
+            }
+
+            System.out.println("Livro editado com sucesso!");
+        } else {
+            System.out.println("Livro não encontrado.");
+        }
+
+        return livroExistente;
+    }
+
+
 
     public void mostrarTodosOsLivros() {
         for (Livro livro : listaLivros) {
@@ -89,7 +142,8 @@ public class SistemaFichamentoLivros {
             System.out.println("1. Cadastrar novo livro");
             System.out.println("2. Mostrar todos os livros");
             System.out.println("3. Excluir livro");
-            System.out.println("4. Sair");
+            System.out.println("4. Editar livro");
+            System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = Integer.parseInt(scanner.nextLine());
 
@@ -103,14 +157,19 @@ public class SistemaFichamentoLivros {
                 case 3:
                     sistema.excluirLivro();
                     break;
+
                 case 4:
+                        sistema.editarLivro();
+                        break;
+
+                case 5:
                     System.out.println("Sistema encerrado.");
                     break;
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
 
-        } while (opcao != 4);
+        } while (opcao != 5);
 
     }
 }
