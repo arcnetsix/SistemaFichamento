@@ -1,7 +1,11 @@
 public class Fichamento extends Livro {
 
     private String assunto;
-    private String comentario;
+
+    // Construtor que recebe um comentário e chama o construtor da classe pai (Livro)
+    public Fichamento(String comentario) {
+        super(comentario);
+    }
 
     public String getAssunto() {
         return assunto;
@@ -11,18 +15,5 @@ public class Fichamento extends Livro {
         this.assunto = assunto;
     }
 
-    public String getComentario() {
-        return comentario;
-    }
 
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
-    @Override
-    public void mostrarInformacoes() {
-        super.mostrarInformacoes();
-        System.out.println("Assunto: " + assunto);
-        System.out.println("Comentário: " + comentario);
-    }
 }

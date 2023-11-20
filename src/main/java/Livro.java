@@ -1,8 +1,16 @@
+import javafx.scene.control.Alert;
+
 public class Livro {
     private String titulo;
     private String autor;
     private int anoPublicacao;
     private String genero;
+    private String assunto;
+    private String comentario;
+
+    public Livro(String comentario) {
+        this.comentario = comentario;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -36,16 +44,34 @@ public class Livro {
         this.genero = genero;
     }
 
-    // Construtor
-    public Livro() {
+    public String getAssunto() {
+        return assunto;
+    }
+
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public void mostrarInformacoes() {
-        System.out.println("Título: " + titulo);
-        System.out.println("Autor: " + autor);
-        System.out.println("Ano de Publicação: " + anoPublicacao);
-        System.out.println("Gênero: " + genero);
-
-
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informações do Livro");
+        alert.setHeaderText(null);
+        alert.setContentText("Título: " + titulo + "\n" +
+                "Autor: " + autor + "\n" +
+                "Ano de Publicação: " + anoPublicacao + "\n" +
+                "Gênero: " + genero + "\n" +
+                "Assunto: " + assunto + "\n" +
+                "Comentário: " + getComentario());
+        alert.showAndWait();
     }
+
+
 }
